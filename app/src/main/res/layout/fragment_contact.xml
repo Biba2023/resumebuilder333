@@ -1,51 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.resumebuilder.ui.home.ContactViewModel" />
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/fio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="40dp"
-            android:hint="ФИО"/>
+            android:inputType="textPersonName"
+            android:text="@={viewModel.contactInfoLiveData.name}"
+            android:hint="@string/fio"/>
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.contactInfoLiveData.email}"
             android:hint="Электронная почта"/>
         <EditText
+            android:id="@+id/telephone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
+            android:inputType="phone"
+            android:text="@={viewModel.contactInfoLiveData.telephone}"
             android:hint="Номер телефона"/>
         <EditText
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
+            android:text="@={viewModel.contactInfoLiveData.address}"
             android:hint="Адрес"/>
         <EditText
+            android:id="@+id/dateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:text="@={viewModel.contactInfoLiveData.dateOfBirth}"
             android:hint="Дата рождения"/>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_save"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_save"
@@ -55,4 +69,4 @@
             android:text="Сохранить"/>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.resumebuilder.ui.home.ContactViewModel" />
+            type="com.example.resumebuilder.ui.contact.ContactViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"

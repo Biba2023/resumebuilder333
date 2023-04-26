@@ -1,4 +1,4 @@
-package com.example.resumebuilder.ui.home;
+package com.example.resumebuilder.ui.contact;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

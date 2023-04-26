@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.resumebuilder.ui.home.ContanctFragment"
+        android:name="com.example.resumebuilder.ui.contact.ContanctFragment"
         android:label="Контактная информация"
         tools:layout="@layout/fragment_contact" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.resumebuilder.ui.gallery.GalleryFragment"
+        android:name="com.example.resumebuilder.ui.personalInfo.PersonalInfoFragment"
         android:label="Персональная информация"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_personal" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.resumebuilder.ui.slideshow.SlideshowFragment"
+        android:name="com.example.resumebuilder.ui.career.CareerFragment"
         android:label="Опыт работы"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_career" />
 </navigation>

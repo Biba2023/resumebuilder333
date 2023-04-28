@@ -16,5 +16,21 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/career"
             android:title="Опыт работы" />
+        <item
+            android:id="@+id/nav_education"
+            android:icon="@drawable/icon_book"
+            android:title="Образование" />
+        <item
+            android:id="@+id/nav_keySkills"
+            android:icon="@drawable/icon_key"
+            android:title="Ключевые навыки" />
+        <item
+            android:id="@+id/nav_projects"
+            android:icon="@drawable/icon_checklist"
+            android:title="Проекты" />
+        <item
+            android:id="@+id/nav_interests"
+            android:icon="@drawable/icon_dumbbell"
+            android:title="Интересы" />
     </group>
 </menu>

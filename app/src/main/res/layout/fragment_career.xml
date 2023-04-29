@@ -17,6 +17,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:inputType="text"
+            android:text="@={viewModel.careerLiveData.nameofCompany}"
             android:hint="Название компании (+местонахождение)"/>
         <EditText
             android:id="@+id/job"
@@ -26,6 +27,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:inputType="text"
+            android:text="@={viewModel.careerLiveData.job}"
             android:hint="Должность"/>
         <EditText
             android:id="@+id/introduction"
@@ -35,6 +37,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:inputType="text"
+            android:text="@={viewModel.careerLiveData.introduction}"
             android:hint="Введение"/>
         <EditText
             android:id="@+id/detailsofJob"
@@ -44,6 +47,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:inputType="text"
+            android:text="@={viewModel.careerLiveData.details}"
             android:hint="Поробности"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,6 +60,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="20dp"
                 android:inputType="date"
+                android:text="@={viewModel.careerLiveData.startDate}"
                 android:hint="Дата начала"/>
             <EditText
                 android:id="@+id/endDate"
@@ -64,11 +69,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="20dp"
-                android:hint="Дата окончания"/>
+                android:text="@={viewModel.careerLiveData.endDate}"
+                android:hint="Дата окончания"
+                android:inputType="date"/>
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_save3"
-            android:layout_width="170dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_save"
             android:layout_marginStart="200dp"

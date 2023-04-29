@@ -3,23 +3,23 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.resumebuilder.ui.personalInfo.PersonalInfoViewModel" />
+            type="com.example.resumebuilder.ui.keySkills.KeySkillsViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <EditText
-            android:id="@+id/keyExperience"
+            android:id="@+id/keySkills"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="@={viewModel.personalInfoLiveData.keyExperience}"
-            android:hint="1-2 предложения, описывающие ваш ключевой опыт"/>
+            android:text="@={viewModel.keySkillsLiveData.keySkills}"
+            android:hint="@string/skills"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_save2"
+            android:id="@+id/button_save4"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_save"

@@ -12,7 +12,7 @@
         <EditText
             android:id="@+id/fio"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="40dp"
@@ -22,7 +22,7 @@
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
@@ -32,7 +32,7 @@
         <EditText
             android:id="@+id/telephone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
@@ -42,7 +42,7 @@
         <EditText
             android:id="@+id/address"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
@@ -51,16 +51,17 @@
         <EditText
             android:id="@+id/dateOfBirth"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:layout_marginTop="20dp"
-            android:inputType="text"
+            android:inputType="date"
             android:text="@={viewModel.contactInfoLiveData.dateOfBirth}"
-            android:hint="Дата рождения"/>
+            android:hint="Дата рождения"
+            />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_save"
-            android:layout_width="170dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_save"
             android:layout_marginStart="200dp"

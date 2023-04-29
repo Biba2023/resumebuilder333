@@ -22,4 +22,14 @@
         android:name="com.example.resumebuilder.ui.career.CareerFragment"
         android:label="Опыт работы"
         tools:layout="@layout/fragment_career" />
+    <fragment
+        android:id="@+id/nav_education"
+        android:name="com.example.resumebuilder.ui.education.EducationFragment"
+        android:label="Образование"
+        tools:layout="@layout/fragment_education" />
+    <fragment
+        android:id="@+id/nav_keySkills"
+        android:name="com.example.resumebuilder.ui.keySkills.KeySkillsFragment"
+        android:label="Ключевые навыки"
+        tools:layout="@layout/fragment_skills" />
 </navigation>

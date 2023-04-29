@@ -4,15 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.ContactInfo;
 import com.example.resumebuilder.databinding.FragmentContactBinding;
 
-public class ContanctFragment extends Fragment {
+public class ContanctFragment extends Fragment{
 
     private FragmentContactBinding binding;
     private ContactViewModel contactViewModel;
@@ -28,6 +30,10 @@ public class ContanctFragment extends Fragment {
         binding.setViewModel(contactViewModel);
         binding.setLifecycleOwner(this);
 
+
+
+
+
         return root;
     }
 
@@ -41,8 +47,8 @@ public class ContanctFragment extends Fragment {
         contactInfo.setAddress(binding.address.getText().toString());
         contactInfo.setDateOfBirth(binding.dateOfBirth.getText().toString());
         contactViewModel.SaveContact(contactInfo);
-    }
 
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

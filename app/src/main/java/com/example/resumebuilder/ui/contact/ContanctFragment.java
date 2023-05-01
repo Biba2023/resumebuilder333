@@ -1,12 +1,17 @@
 package com.example.resumebuilder.ui.contact;
 
+import static androidx.core.content.PackageManagerCompat.LOG_TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -33,9 +38,21 @@ public class ContanctFragment extends Fragment{
 
 
 
-
         return root;
     }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+        Button button = (Button) view.findViewById(R.id.button_save);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "jkkkk", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
 
     @Override
     public void onPause() {

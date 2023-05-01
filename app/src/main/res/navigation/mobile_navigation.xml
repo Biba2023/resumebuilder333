@@ -32,4 +32,19 @@
         android:name="com.example.resumebuilder.ui.keySkills.KeySkillsFragment"
         android:label="Ключевые навыки"
         tools:layout="@layout/fragment_skills" />
+    <fragment
+        android:id="@+id/nav_projects"
+        android:name="com.example.resumebuilder.ui.projects.ProjectsFragment"
+        android:label="Интересы"
+        tools:layout="@layout/fragment_projects" />
+    <fragment
+        android:id="@+id/nav_interests"
+        android:name="com.example.resumebuilder.ui.interests.InterestsFragment"
+        android:label="Интересы"
+        tools:layout="@layout/fragment_interests" />
+    <fragment
+        android:id="@+id/nav_photo"
+        android:name="com.example.resumebuilder.ui.photo.PhotoFragment"
+        android:label="Фото"
+        tools:layout="@layout/fragment_photo" />
 </navigation>

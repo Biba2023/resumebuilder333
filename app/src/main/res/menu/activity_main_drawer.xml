@@ -32,5 +32,9 @@
             android:id="@+id/nav_interests"
             android:icon="@drawable/icon_dumbbell"
             android:title="Интересы" />
+        <item
+            android:id="@+id/nav_photo"
+            android:icon="@drawable/icon_picture"
+            android:title="Фото" />
     </group>
 </menu>

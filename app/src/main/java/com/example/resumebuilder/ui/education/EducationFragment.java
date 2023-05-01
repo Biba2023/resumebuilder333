@@ -4,10 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.Education;
 import com.example.resumebuilder.databinding.FragmentEducationBinding;
 
@@ -26,6 +31,17 @@ public class EducationFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         return root;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+        Button button = (Button) view.findViewById(R.id.button_save4);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "jkkkk", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     @Override
     public void onPause() {

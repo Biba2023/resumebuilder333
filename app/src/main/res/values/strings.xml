@@ -12,4 +12,10 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="skills">Перечислите ваши ключевые навыки здесь</string>
     <string name="fio">ФИО</string>
+    <string name="interests">Перечислите ваши интересы здесь</string>
+    <string name="save">Сохранить</string>
+    <string name="projectTitle">Название проекта</string>
+    <string name="details">Детали</string>
+    <string name="startDate">Дата начала</string>
+    <string name="endDate">Дата окончания</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.resumebuilder.ui.keySkills;
+package com.example.resumebuilder.ui.interests;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,29 +7,29 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.resumebuilder.R;
-import com.example.resumebuilder.data.KeySkills;
-import com.example.resumebuilder.databinding.FragmentSkillsBinding;
-import com.example.resumebuilder.databinding.FragmentSkillsBinding;
-import com.example.resumebuilder.ui.keySkills.KeySkillsViewModel;
+import com.example.resumebuilder.data.Interests;
+import com.example.resumebuilder.data.PersonalInfo;
+import com.example.resumebuilder.databinding.FragmentInterestsBinding;
+import com.example.resumebuilder.databinding.FragmentPersonalBinding;
+import com.example.resumebuilder.ui.personalInfo.PersonalInfoViewModel;
 
-public class KeySkillsFragment extends Fragment {
-    private FragmentSkillsBinding binding;
-    private KeySkillsViewModel keySkillsViewModel;
+public class InterestsFragment extends Fragment {
+    private FragmentInterestsBinding binding;
+    private InterestsViewModel interestsViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        keySkillsViewModel =
-                new ViewModelProvider(this).get(KeySkillsViewModel.class);
+        interestsViewModel =
+                new ViewModelProvider(this).get(InterestsViewModel.class);
 
-        binding = FragmentSkillsBinding.inflate(inflater, container, false);
+        binding = FragmentInterestsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.setViewModel(keySkillsViewModel);
+        binding.setViewModel(interestsViewModel);
         binding.setLifecycleOwner(this);
 
         return root;
@@ -37,7 +37,7 @@ public class KeySkillsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save5);
+        Button button = (Button) view.findViewById(R.id.button_save7);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,9 +48,9 @@ public class KeySkillsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        KeySkills keySkills = new KeySkills();
-        keySkills.setKeySkills(binding.keySkills.getText().toString());
-        keySkillsViewModel.SaveKeySkills(keySkills);
+        Interests interests = new Interests();
+        interests.setInterests(binding.interests.getText().toString());
+        interestsViewModel.SaveInterests(interests);
     }
     @Override
     public void onDestroyView() {

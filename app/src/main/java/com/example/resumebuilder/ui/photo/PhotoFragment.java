@@ -1,4 +1,4 @@
-package com.example.resumebuilder.ui.keySkills;
+package com.example.resumebuilder.ui.photo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,37 +7,35 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.resumebuilder.R;
-import com.example.resumebuilder.data.KeySkills;
-import com.example.resumebuilder.databinding.FragmentSkillsBinding;
-import com.example.resumebuilder.databinding.FragmentSkillsBinding;
-import com.example.resumebuilder.ui.keySkills.KeySkillsViewModel;
 
-public class KeySkillsFragment extends Fragment {
-    private FragmentSkillsBinding binding;
-    private KeySkillsViewModel keySkillsViewModel;
+import com.example.resumebuilder.databinding.FragmentPersonalBinding;
+import com.example.resumebuilder.databinding.FragmentPhotoBinding;
+import com.example.resumebuilder.ui.personalInfo.PersonalInfoViewModel;
+
+public class PhotoFragment extends Fragment {
+    private FragmentPhotoBinding binding;
+    private PhotoViewModel photoViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        keySkillsViewModel =
-                new ViewModelProvider(this).get(KeySkillsViewModel.class);
+        photoViewModel =
+                new ViewModelProvider(this).get(PhotoViewModel.class);
 
-        binding = FragmentSkillsBinding.inflate(inflater, container, false);
+        binding = FragmentPhotoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.setViewModel(keySkillsViewModel);
-        binding.setLifecycleOwner(this);
+
 
         return root;
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save5);
+        Button button = (Button) view.findViewById(R.id.button_save2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,9 +46,7 @@ public class KeySkillsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        KeySkills keySkills = new KeySkills();
-        keySkills.setKeySkills(binding.keySkills.getText().toString());
-        keySkillsViewModel.SaveKeySkills(keySkills);
+
     }
     @Override
     public void onDestroyView() {
@@ -58,4 +54,5 @@ public class KeySkillsFragment extends Fragment {
         binding = null;
     }
 }
+
 

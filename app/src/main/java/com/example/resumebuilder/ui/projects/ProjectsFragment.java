@@ -1,4 +1,4 @@
-package com.example.resumebuilder.ui.keySkills;
+package com.example.resumebuilder.ui.projects;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,29 +7,29 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.resumebuilder.R;
-import com.example.resumebuilder.data.KeySkills;
-import com.example.resumebuilder.databinding.FragmentSkillsBinding;
-import com.example.resumebuilder.databinding.FragmentSkillsBinding;
-import com.example.resumebuilder.ui.keySkills.KeySkillsViewModel;
+import com.example.resumebuilder.data.Education;
+import com.example.resumebuilder.data.Projects;
+import com.example.resumebuilder.databinding.FragmentEducationBinding;
+import com.example.resumebuilder.databinding.FragmentProjectsBinding;
+import com.example.resumebuilder.ui.education.EducationViewModel;
 
-public class KeySkillsFragment extends Fragment {
-    private FragmentSkillsBinding binding;
-    private KeySkillsViewModel keySkillsViewModel;
+public class ProjectsFragment extends Fragment {
+    private FragmentProjectsBinding binding;
+    private ProjectsViewModel projectsViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        keySkillsViewModel =
-                new ViewModelProvider(this).get(KeySkillsViewModel.class);
+        projectsViewModel =
+                new ViewModelProvider(this).get(ProjectsViewModel.class);
 
-        binding = FragmentSkillsBinding.inflate(inflater, container, false);
+        binding = FragmentProjectsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        binding.setViewModel(keySkillsViewModel);
+        binding.setViewModel(projectsViewModel);
         binding.setLifecycleOwner(this);
 
         return root;
@@ -37,7 +37,7 @@ public class KeySkillsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save5);
+        Button button = (Button) view.findViewById(R.id.button_save6);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,14 +48,17 @@ public class KeySkillsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        KeySkills keySkills = new KeySkills();
-        keySkills.setKeySkills(binding.keySkills.getText().toString());
-        keySkillsViewModel.SaveKeySkills(keySkills);
+        Projects projects = new Projects();
+        projects.setProject(binding.nameofProject.getText().toString());
+        projects.setDetails(binding.detailsofProject.getText().toString());
+        projects.setStartDate(binding.startDateofProject.getText().toString());
+        projects.setEndDate(binding.endDateofProject.getText().toString());
+        projectsViewModel.SaveProjects(projects);
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
 }
-

@@ -3,29 +3,29 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.resumebuilder.ui.keySkills.KeySkillsViewModel" />
+            type="com.example.resumebuilder.ui.interests.InterestsViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <EditText
-            android:id="@+id/keySkills"
+            android:id="@+id/interests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:text="@={viewModel.keySkillsLiveData.keySkills}"
-            android:hint="@string/skills"/>
+            android:text="@={viewModel.interestsLiveData.interests}"
+            android:hint="@string/interests"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_save5"
+            android:id="@+id/button_save7"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_save"
             android:layout_marginStart="200dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd = "20dp"
-            android:text="Сохранить"/>
+            android:text="@string/save"/>
     </LinearLayout>
 </layout>

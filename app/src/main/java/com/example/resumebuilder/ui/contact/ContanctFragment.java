@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,11 +44,29 @@ public class ContanctFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView button_delete = binding.buttonDelete1;
+        Button button_save = binding.buttonSave1;
+        button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "jkkkk", Toast.LENGTH_LONG).show();
+
+            }
+        });
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContactInfo contactInfo = new ContactInfo();
+                binding.fio.setText("");
+                binding.email.setText("");
+                binding.telephone.setText("");
+                binding.address.setText("");
+                binding.dateOfBirth.setText("");
+                contactInfo.setName(binding.fio.getText().toString());
+                contactInfo.setEmail(binding.email.getText().toString());
+                contactInfo.setTelephone(binding.telephone.getText().toString());
+                contactInfo.setAddress(binding.address.getText().toString());
+                contactInfo.setDateOfBirth(binding.dateOfBirth.getText().toString());
+                contactViewModel.SaveContact(contactInfo);
             }
         });
     }

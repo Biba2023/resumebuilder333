@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,11 +36,31 @@ public class CareerFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save3);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView button_delete = binding.buttonDelete3;
+        Button button_save = binding.buttonSave3;
+        button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "jkkkk", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Career career = new Career();
+                binding.nameofCompany.setText("");
+                binding.job.setText("");
+                binding.introduction.setText("");
+                binding.detailsofJob.setText("");
+                binding.startDate.setText("");
+                binding.endDate.setText("");
+                career.setNameofCompany(binding.nameofCompany.getText().toString());
+                career.setJob(binding.job.getText().toString());
+                career.setIntroduction(binding.introduction.getText().toString());
+                career.setDetails(binding.detailsofJob.getText().toString());
+                career.setStartDate(binding.startDate.getText().toString());
+                career.setEndDate(binding.endDate.getText().toString());
+                careerViewModel.SaveCareer(career);
             }
         });
     }

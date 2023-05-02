@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.resumebuilder.R;
+import com.example.resumebuilder.data.Interests;
 import com.example.resumebuilder.data.KeySkills;
 import com.example.resumebuilder.databinding.FragmentSkillsBinding;
 import com.example.resumebuilder.databinding.FragmentSkillsBinding;
@@ -37,11 +39,22 @@ public class KeySkillsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save5);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView button_delete = binding.buttonDelete5;
+        Button button_save = binding.buttonSave5;
+        button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "jkkkk", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.keySkills.setText("");
+                KeySkills keySkills = new KeySkills();
+                keySkills.setKeySkills(binding.keySkills.getText().toString());
+                keySkillsViewModel.SaveKeySkills(keySkills);
+
             }
         });
     }

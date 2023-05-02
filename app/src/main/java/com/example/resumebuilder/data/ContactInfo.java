@@ -21,6 +21,7 @@ public class ContactInfo {
         this.address = address;
         this.dateOfBirth = dateOfBirth;
     }
+    public void deleteName(String name) {this.name = "";}
 
     public String getName() {
         return name;

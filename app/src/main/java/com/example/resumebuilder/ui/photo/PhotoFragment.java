@@ -35,7 +35,7 @@ public class PhotoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save2);
+        Button button = (Button) view.findViewById(R.id.button_save8);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

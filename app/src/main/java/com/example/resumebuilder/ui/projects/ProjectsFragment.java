@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,11 +38,27 @@ public class ProjectsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.button_save6);
-        button.setOnClickListener(new View.OnClickListener() {
+        TextView button_delete = binding.buttonDelete6;
+        Button button_save = binding.buttonSave6;
+        button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "jkkkk", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.nameofProject.setText("");
+                binding.detailsofProject.setText("");
+                binding.startDateofProject.setText("");
+                binding.endDateofProject.setText("");
+                Projects projects = new Projects();
+                projects.setProject(binding.nameofProject.getText().toString());
+                projects.setDetails(binding.detailsofProject.getText().toString());
+                projects.setStartDate(binding.startDateofProject.getText().toString());
+                projects.setEndDate(binding.endDateofProject.getText().toString());
+                projectsViewModel.SaveProjects(projects);
             }
         });
     }

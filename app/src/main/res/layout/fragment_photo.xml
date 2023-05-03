@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="270dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center"
+        android:src="@drawable/icon_user"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/button_delete8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deletePhoto"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginStart="35dp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_save8"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_save"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd = "20dp"
+            android:text="@string/savePhoto"/>
+    </LinearLayout>
+</LinearLayout>
+</layout>

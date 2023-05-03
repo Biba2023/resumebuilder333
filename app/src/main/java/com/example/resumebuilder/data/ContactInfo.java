@@ -1,6 +1,12 @@
 package com.example.resumebuilder.data;
 
-public class ContactInfo {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class ContactInfo extends RealmObject {
+
+    @PrimaryKey
+    private int id = 1;
     private String name;
     private String email;
     private String telephone;
@@ -13,7 +19,9 @@ public class ContactInfo {
         this.address = "";
         this.dateOfBirth = "";
     }
-
+    public ContactInfo(ContactInfo contactInfo){
+        this(contactInfo.getName(), contactInfo.getEmail(), contactInfo.getTelephone(), contactInfo.getAddress(), contactInfo.getDateOfBirth());
+    }
     public ContactInfo(String name, String email, String telephone, String address, String dateOfBirth) {
         this.name = name;
         this.email = email;
@@ -21,7 +29,11 @@ public class ContactInfo {
         this.address = address;
         this.dateOfBirth = dateOfBirth;
     }
+    public void deleteName(String name) {this.name = "";}
 
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -60,5 +72,15 @@ public class ContactInfo {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+    @Override
+    public String toString() {
+        return "ContactInfo{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                '}';
     }
 }

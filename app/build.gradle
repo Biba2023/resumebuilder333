@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.application'
 }
-
+apply plugin: 'realm-android'
 android {
+
     namespace 'com.example.resumebuilder'
     compileSdk 33
 
@@ -30,10 +31,14 @@ android {
         dataBinding true
         viewBinding true
     }
-}
 
+}
+realm {
+    syncEnabled = true
+}
 dependencies {
 
+    implementation 'io.realm:android-adapters:4.0.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

@@ -1,10 +1,11 @@
-package com.example.resumebuilder.ui.home;
+package com.example.resumebuilder.ui.contact;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.resumebuilder.data.ContactInfo;
+import com.example.resumebuilder.db.RealmManager;
 
 public class ContactViewModel extends ViewModel {
 
@@ -12,7 +13,14 @@ public class ContactViewModel extends ViewModel {
     private final ContactInfo mContactInfo;
 
     public ContactViewModel() {
-        mContactInfo = new ContactInfo();
+
+
+        ContactInfo contactInfo = (ContactInfo) RealmManager.getInstance().getRealmObject(ContactInfo.class);
+        if(contactInfo == null)
+            mContactInfo = new ContactInfo();
+        else
+            mContactInfo = new ContactInfo(contactInfo);
+
         mContactInfoLiveData = new MutableLiveData<>(mContactInfo);
     }
 
@@ -28,5 +36,7 @@ public class ContactViewModel extends ViewModel {
         mContactInfo.setDateOfBirth(contactInfo.getDateOfBirth());
 
         mContactInfoLiveData.setValue(mContactInfo);
+
+        RealmManager.getInstance().update(mContactInfo);
     }
 }

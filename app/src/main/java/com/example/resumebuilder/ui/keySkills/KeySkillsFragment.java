@@ -44,7 +44,9 @@ public class KeySkillsFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                KeySkills keySkills = new KeySkills();
+                keySkills.setKeySkills(binding.keySkills.getText().toString());
+                keySkillsViewModel.SaveKeySkills(keySkills);
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +65,6 @@ public class KeySkillsFragment extends Fragment {
         super.onPause();
         KeySkills keySkills = new KeySkills();
         keySkills.setKeySkills(binding.keySkills.getText().toString());
-        keySkillsViewModel.SaveKeySkills(keySkills);
     }
     @Override
     public void onDestroyView() {

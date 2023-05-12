@@ -43,7 +43,9 @@ public class InterestsFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Interests interests = new Interests();
+                interests.setInterests(binding.interests.getText().toString());
+                interestsViewModel.SaveInterests(interests);
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +63,7 @@ public class InterestsFragment extends Fragment {
         super.onPause();
         Interests interests = new Interests();
         interests.setInterests(binding.interests.getText().toString());
-        interestsViewModel.SaveInterests(interests);
+
     }
     @Override
     public void onDestroyView() {

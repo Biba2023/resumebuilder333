@@ -17,7 +17,9 @@ public class Projects extends RealmObject {
         this.startDate = "";
         this.endDate = "";
     }
-
+    public Projects(Projects projects){
+        this(projects.getProject(), projects.getDetails(), projects.getStartDate(), projects.getEndDate());
+    }
     public Projects(String project, String details, String startDate, String endDate) {
         this.project = project;
         this.details = details;
@@ -52,5 +54,14 @@ public class Projects extends RealmObject {
     }
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+    @Override
+    public String toString() {
+        return "Projects{" +
+                "project='" + project + '\'' +
+                ", details='" + details + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 }

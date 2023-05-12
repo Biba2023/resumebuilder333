@@ -43,7 +43,12 @@ public class ProjectsFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Projects projects = new Projects();
+                projects.setProject(binding.nameofProject.getText().toString());
+                projects.setDetails(binding.detailsofProject.getText().toString());
+                projects.setStartDate(binding.startDateofProject.getText().toString());
+                projects.setEndDate(binding.endDateofProject.getText().toString());
+                projectsViewModel.SaveProjects(projects);
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +75,7 @@ public class ProjectsFragment extends Fragment {
         projects.setDetails(binding.detailsofProject.getText().toString());
         projects.setStartDate(binding.startDateofProject.getText().toString());
         projects.setEndDate(binding.endDateofProject.getText().toString());
-        projectsViewModel.SaveProjects(projects);
+
     }
 
     @Override

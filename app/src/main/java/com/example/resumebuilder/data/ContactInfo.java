@@ -29,7 +29,7 @@ public class ContactInfo extends RealmObject {
         this.address = address;
         this.dateOfBirth = dateOfBirth;
     }
-    public void deleteName(String name) {this.name = "";}
+
 
     public int getId() {
         return id;

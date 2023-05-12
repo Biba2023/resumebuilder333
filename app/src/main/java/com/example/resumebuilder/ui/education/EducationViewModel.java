@@ -5,14 +5,20 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
+import com.example.resumebuilder.data.ContactInfo;
 import com.example.resumebuilder.data.Education;
+import com.example.resumebuilder.db.RealmManager;
 
 public class EducationViewModel extends ViewModel {
     private final MutableLiveData<Education> mEducationLiveData;
     private final Education mEducation;
 
     public EducationViewModel() {
-        mEducation = new Education();
+        Education education = (Education) RealmManager.getInstance().getRealmObject(Education.class);
+        if(education == null)
+            mEducation = new Education();
+        else
+            mEducation = new Education(education);
         mEducationLiveData = new MutableLiveData<>(mEducation);
     }
 
@@ -28,5 +34,6 @@ public class EducationViewModel extends ViewModel {
         mEducation.setStartDate(education.getStartDate());
         mEducation.setEndDate(education.getEndDate());
         mEducationLiveData.setValue(mEducation);
+        RealmManager.getInstance().update(mEducation);
     }
 }

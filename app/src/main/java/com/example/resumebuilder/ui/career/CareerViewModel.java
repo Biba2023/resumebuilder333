@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.resumebuilder.data.Career;
+import com.example.resumebuilder.data.ContactInfo;
+import com.example.resumebuilder.db.RealmManager;
 
 public class CareerViewModel extends ViewModel {
 
@@ -12,7 +14,11 @@ public class CareerViewModel extends ViewModel {
     private final Career mCareer;
 
     public CareerViewModel() {
-        mCareer = new Career();
+        Career career = (Career) RealmManager.getInstance().getRealmObject(Career.class);
+        if(career == null)
+            mCareer = new Career();
+        else
+            mCareer = new Career(career);
         mCareerLiveData = new MutableLiveData<>(mCareer);
     }
 
@@ -28,5 +34,6 @@ public class CareerViewModel extends ViewModel {
         mCareer.setStartDate(career.getStartDate());
         mCareer.setEndDate(career.getEndDate());
         mCareerLiveData.setValue(mCareer);
+        RealmManager.getInstance().update(mCareer);
     }
 }

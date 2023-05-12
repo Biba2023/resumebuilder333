@@ -41,7 +41,9 @@ public class PersonalInfoFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                PersonalInfo personalInfo = new PersonalInfo();
+                personalInfo.setKeyExperience(binding.keyExperience.getText().toString());
+                personalInfoViewModel.SavePersonalInfo(personalInfo);
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +61,7 @@ public class PersonalInfoFragment extends Fragment {
         super.onPause();
         PersonalInfo personalInfo = new PersonalInfo();
         personalInfo.setKeyExperience(binding.keyExperience.getText().toString());
-        personalInfoViewModel.SavePersonalInfo(personalInfo);
+
     }
     @Override
     public void onDestroyView() {

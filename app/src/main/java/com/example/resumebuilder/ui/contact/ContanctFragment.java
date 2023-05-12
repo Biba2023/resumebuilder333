@@ -49,7 +49,13 @@ public class ContanctFragment extends Fragment{
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ContactInfo contactInfo = new ContactInfo();
+                contactInfo.setName(binding.fio.getText().toString());
+                contactInfo.setEmail(binding.email.getText().toString());
+                contactInfo.setTelephone(binding.telephone.getText().toString());
+                contactInfo.setAddress(binding.address.getText().toString());
+                contactInfo.setDateOfBirth(binding.dateOfBirth.getText().toString());
+                contactViewModel.SaveContact(contactInfo);
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +88,7 @@ public class ContanctFragment extends Fragment{
         contactInfo.setTelephone(binding.telephone.getText().toString());
         contactInfo.setAddress(binding.address.getText().toString());
         contactInfo.setDateOfBirth(binding.dateOfBirth.getText().toString());
-        contactViewModel.SaveContact(contactInfo);
+
 
     }
     @Override

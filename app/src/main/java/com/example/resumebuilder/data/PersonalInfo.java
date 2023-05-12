@@ -10,6 +10,9 @@ public class PersonalInfo extends RealmObject {
     public PersonalInfo(){
         this.keyExperience = "";
     }
+    public PersonalInfo(PersonalInfo personalInfo){
+        this(personalInfo.getKeyExperience());
+    }
     public PersonalInfo(String keyExperience){
         this.keyExperience = keyExperience;
     }
@@ -20,4 +23,11 @@ public class PersonalInfo extends RealmObject {
     public void setKeyExperience(String keyExperience) {
         this.keyExperience = keyExperience;
     }
+    @Override
+    public String toString() {
+        return "PersonalInfo{" +
+                ", keyExperience='" + keyExperience + '\'' +
+                '}';
+    }
+
 }

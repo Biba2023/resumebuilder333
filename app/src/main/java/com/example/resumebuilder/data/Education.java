@@ -21,6 +21,9 @@ public class Education  extends RealmObject {
         this.startDate = "";
         this.endDate = "";
     }
+    public Education(Education education){
+        this(education.getUniversity(), education.getQualification(), education.getGrade(),education.getDetails(), education.getStartDate(), education.getEndDate());
+    }
 
     public Education(String university, String qualification, String grade, String details, String startDate, String endDate) {
         this.university = university;
@@ -30,7 +33,9 @@ public class Education  extends RealmObject {
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
+    public int getId() {
+        return id;
+    }
     public String getUniversity() {
         return university;
     }

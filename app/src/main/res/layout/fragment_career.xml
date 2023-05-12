@@ -38,7 +38,7 @@
             android:layout_marginEnd="20dp"
             android:inputType="text"
             android:text="@={viewModel.careerLiveData.introduction}"
-            android:hint="Введение"/>
+            android:hint="Основные обязанности"/>
         <EditText
             android:id="@+id/detailsofJob"
             android:layout_width="match_parent"

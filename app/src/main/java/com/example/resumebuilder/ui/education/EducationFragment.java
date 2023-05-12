@@ -42,7 +42,14 @@ public class EducationFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Education education = new Education();
+                education.setUniversity(binding.nameofUniversity.getText().toString());
+                education.setQualification(binding.qualofication.getText().toString());
+                education.setGrade(binding.grade.getText().toString());
+                education.setDetails(binding.detailsofEducation.getText().toString());
+                education.setStartDate(binding.startDateofEducation.getText().toString());
+                education.setEndDate(binding.endDateofeducation.getText().toString());
+                educationViewModel.SaveEducation(education);
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +82,7 @@ public class EducationFragment extends Fragment {
         education.setDetails(binding.detailsofEducation.getText().toString());
         education.setStartDate(binding.startDateofEducation.getText().toString());
         education.setEndDate(binding.endDateofeducation.getText().toString());
-        educationViewModel.SaveEducation(education);
+
     }
 
     @Override

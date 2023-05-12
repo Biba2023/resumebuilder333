@@ -41,7 +41,14 @@ public class CareerFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Career career = new Career();
+                career.setNameofCompany(binding.nameofCompany.getText().toString());
+                career.setJob(binding.job.getText().toString());
+                career.setIntroduction(binding.introduction.getText().toString());
+                career.setDetails(binding.detailsofJob.getText().toString());
+                career.setStartDate(binding.startDate.getText().toString());
+                career.setEndDate(binding.endDate.getText().toString());
+                careerViewModel.SaveCareer(career);
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +81,7 @@ public class CareerFragment extends Fragment {
         career.setDetails(binding.detailsofJob.getText().toString());
         career.setStartDate(binding.startDate.getText().toString());
         career.setEndDate(binding.endDate.getText().toString());
-        careerViewModel.SaveCareer(career);
+
     }
 
     @Override

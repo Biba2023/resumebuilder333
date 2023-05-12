@@ -10,8 +10,14 @@ public class Interests extends RealmObject {
     public Interests(){
         this.interests = "";
     }
+    public Interests(Interests interests){
+        this(interests.getInterests());
+    }
     public Interests(String interests){
         this.interests = interests;
+    }
+    public int getId() {
+        return id;
     }
     public String getInterests() {
         return interests;
@@ -19,6 +25,12 @@ public class Interests extends RealmObject {
 
     public void setInterests(String interests) {
         this.interests = interests;
+    }
+    @Override
+    public String toString() {
+        return "Interests{" +
+                "interests='" + interests + '\'' +
+                '}';
     }
 }
 

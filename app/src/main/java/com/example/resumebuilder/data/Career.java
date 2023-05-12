@@ -21,6 +21,9 @@ public class Career extends RealmObject {
         this.startDate = "";
         this.endDate = "";
     }
+    public Career(Career career){
+        this(career.getNameofCompany(), career.getJob(), career.getIntroduction(), career.getDetails(), career.getStartDate(), career.getEndDate());
+    }
 
     public Career(String nameofCompany, String job, String introduction, String details, String startDate, String endDate) {
         this.nameofCompany = nameofCompany;
@@ -30,7 +33,9 @@ public class Career extends RealmObject {
         this.startDate = startDate;
         this.endDate = endDate;
     }
-
+    public int getId() {
+        return id;
+    }
     public String getNameofCompany() {
         return nameofCompany;
     }
@@ -74,6 +79,17 @@ public class Career extends RealmObject {
     }
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+    @Override
+    public String toString() {
+        return "Career{" +
+                "nameofCompany='" + nameofCompany + '\'' +
+                ", job='" + job + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", details='" + details + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
     }
 }
 

@@ -53,6 +53,7 @@ public class PersonalInfoFragment extends Fragment {
                 PersonalInfo personalInfo = new PersonalInfo();
                 personalInfo.setKeyExperience(binding.keyExperience.getText().toString());
                 personalInfoViewModel.SavePersonalInfo(personalInfo);
+
             }
         });
     }

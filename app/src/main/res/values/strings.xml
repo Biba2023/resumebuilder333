@@ -21,4 +21,5 @@
     <string name="endDate">Дата окончания</string>
     <string name="deletePhoto"><u>Удалить фото</u></string>
     <string name="delete"><u>Удалить</u></string>
+    <string name="download">Скачать резюме</string>
 </resources>

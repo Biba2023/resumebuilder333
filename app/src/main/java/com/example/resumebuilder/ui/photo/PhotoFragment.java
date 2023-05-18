@@ -1,14 +1,21 @@
 package com.example.resumebuilder.ui.photo;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
+
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +30,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.resumebuilder.R;
 
+import com.example.resumebuilder.data.Interests;
 import com.example.resumebuilder.databinding.FragmentPersonalBinding;
 import com.example.resumebuilder.databinding.FragmentPhotoBinding;
 import com.example.resumebuilder.db.RealmManager;
 import com.example.resumebuilder.ui.personalInfo.PersonalInfoViewModel;
 
 import java.io.InputStream;
+
+import io.realm.RealmResults;
 
 public class PhotoFragment extends Fragment {
     private FragmentPhotoBinding binding;
@@ -62,7 +72,13 @@ public class PhotoFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.h.setText(RealmManager.getInstance().getRealmCollectionCareer().toString());
+                /*RealmResults<Interests> interests = RealmManager.getInstance().getRealmCollectionInterests();
+                Interests buba = interests.get(0);
+                String firstName = buba.getInterests();
+                binding.h.setText(firstName);*/
+                Bitmap bitmap = ((BitmapDrawable)photo.getDrawable()).getBitmap();
+                saveReceivedImage(bitmap, "some_name");
+
             }
         });
 
@@ -84,6 +100,22 @@ public class PhotoFragment extends Fragment {
                 }
         }
    }
+    private void saveReceivedImage(Bitmap image, String imageName){
+        try {
+            File path = new File(getContext().getFilesDir(), "MyAppName" + File.separator + "Images");
+            if(!path.exists()){
+                path.mkdirs();
+            }
+            File outFile = new File(path, imageName + ".jpeg");
+            FileOutputStream outputStream = new FileOutputStream(outFile);
+            image.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.close();
+        } catch (FileNotFoundException e) {
+            Log.e(TAG, "Saving received message failed with", e);
+        } catch (IOException e) {
+            Log.e(TAG, "Saving received message failed with", e);
+        }
+    }
     @Override
     public void onPause() {
         super.onPause();

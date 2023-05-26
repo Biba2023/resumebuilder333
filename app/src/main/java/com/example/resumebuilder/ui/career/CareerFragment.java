@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.Career;
 import com.example.resumebuilder.databinding.FragmentCareerBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class CareerFragment extends Fragment {
 
@@ -49,6 +50,7 @@ public class CareerFragment extends Fragment {
                 career.setStartDate(binding.startDate.getText().toString());
                 career.setEndDate(binding.endDate.getText().toString());
                 careerViewModel.SaveCareer(career);
+                Snackbar.make(view, "Данные успешно сохранены", Snackbar.LENGTH_SHORT).show();
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +70,7 @@ public class CareerFragment extends Fragment {
                 career.setStartDate(binding.startDate.getText().toString());
                 career.setEndDate(binding.endDate.getText().toString());
                 careerViewModel.SaveCareer(career);
+                Snackbar.make(view, "Данные успешно удалены", Snackbar.LENGTH_SHORT).show();
             }
         });
     }

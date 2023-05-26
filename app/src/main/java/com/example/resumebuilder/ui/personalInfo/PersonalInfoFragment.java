@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.PersonalInfo;
 import com.example.resumebuilder.databinding.FragmentPersonalBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class PersonalInfoFragment extends Fragment {
 
@@ -44,6 +45,7 @@ public class PersonalInfoFragment extends Fragment {
                 PersonalInfo personalInfo = new PersonalInfo();
                 personalInfo.setKeyExperience(binding.keyExperience.getText().toString());
                 personalInfoViewModel.SavePersonalInfo(personalInfo);
+                Snackbar.make(view, "Данные успешно сохранены", Snackbar.LENGTH_SHORT).show();
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +55,7 @@ public class PersonalInfoFragment extends Fragment {
                 PersonalInfo personalInfo = new PersonalInfo();
                 personalInfo.setKeyExperience(binding.keyExperience.getText().toString());
                 personalInfoViewModel.SavePersonalInfo(personalInfo);
+                Snackbar.make(view, "Данные успешно удалены", Snackbar.LENGTH_SHORT).show();
 
             }
         });

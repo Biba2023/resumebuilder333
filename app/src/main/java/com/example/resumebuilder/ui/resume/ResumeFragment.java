@@ -1,47 +1,29 @@
 package com.example.resumebuilder.ui.resume;
 
-import static androidx.core.content.ContextCompat.getSystemService;
-import static androidx.core.content.PermissionChecker.checkSelfPermission;
-
-import static io.realm.Realm.getApplicationContext;
-
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.pdf.PdfDocument;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.FileUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.graphics.PathUtils;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.resumebuilder.MainActivity;
+import com.example.resumebuilder.App;
 
-import com.example.resumebuilder.R;
+import com.example.resumebuilder.MainActivity;
+import com.example.resumebuilder.PermissionUtils;
 import com.example.resumebuilder.databinding.FragmentResumeBinding;
+import com.google.android.material.snackbar.Snackbar;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Document;
@@ -52,7 +34,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
 
 public class ResumeFragment extends Fragment {
     private LinearLayout linearLayout;
@@ -60,6 +41,7 @@ public class ResumeFragment extends Fragment {
     private Context context;
     private FragmentResumeBinding binding;
     private ResumeViewModel resumeViewModel;
+    private static final int PERMISSION_STORAGE = 101;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,6 +52,24 @@ public class ResumeFragment extends Fragment {
         View root = binding.getRoot();
         binding.setViewModel(resumeViewModel);
         binding.setLifecycleOwner(this);
+        binding.nameResume.setText(App.nameResume);
+        binding.addressResume.setText(App.addressResume);
+        binding.emailAndPhoneAndDoB.setText(App.emailResume + " | " + App.telephoneResume + " | " + "Дата рождения:" + App.dateofBirthResume);
+        binding.experienceResume.setText(App.experienceResume);
+        binding.nameOfCompanyResume.setText(App.nameOfCompanyResume);
+        binding.jobResume.setText(App.jobResume);
+        binding.introductionResume.setText(App.introductionResume);
+        binding.detailsOfJobResume.setText("•" + App.detailsOfJobResume);
+        binding.dateOfJob.setText(App.startDateJobResume + " - " + App.endDateJobResume);
+        binding.nameOfUniversityResume.setText(App.universityResume);
+        binding.qualificationAndGradeResume.setText(App.qualificationResume + " - " + App.gradeResume);
+        binding.dateOfEducation.setText(App.startDateOfEduResume + " - " + App.endDateOfEduResume);
+        binding.detailsOfEducationResume.setText("•" + App.detailsOfEduResume);
+        binding.nameOfProjectResume.setText(App.projectResume);
+        binding.detailsOfProjectResume.setText(App.detailsOfProjectResume);
+        binding.dateOfProject.setText(App.startDateOfProjectResume + " - " + App.endDateOfProjectResume);
+        binding.skillsResume.setText("•" + App.keySkillsResume);
+        binding.interestsResume.setText("•" + App.interestsResume);
         return root;
 
     }
@@ -77,20 +77,49 @@ public class ResumeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         context = this.getActivity();
-        linearLayout = binding.biba;
+        linearLayout = binding.resume;
         binding.buttonDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                layoutToImage(linearLayout);
-                try {
-                    imageToPDF();
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
+                if (PermissionUtils.hasPermissions(getContext())) {
+                    layoutToImage(linearLayout);
+                    try {
+                        imageToPDF();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    PermissionUtils.requestPermissions(getActivity(), PERMISSION_STORAGE);
                 }
+
+
             }
         });
 
+    }
+    @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                                     @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_STORAGE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Snackbar.make(getView(), "Разрешение получено", Snackbar.LENGTH_SHORT).show();
+            } else {
+                Snackbar.make(getView(), "Разрешение откланено", Snackbar.LENGTH_SHORT).show();
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == PERMISSION_STORAGE) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (PermissionUtils.hasPermissions(getContext())) {
+                    Snackbar.make(getView(), "Разрешение получено", Snackbar.LENGTH_SHORT).show();
+                } else {
+                    Snackbar.make(getView(), "Разрешение откланено", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
     String dirpath;
     View relativeLayout;
@@ -105,16 +134,16 @@ public class ResumeFragment extends Fragment {
         share.setType("image/jpeg");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        Toast.makeText(getActivity().getApplicationContext(), "Image256 Generated successfully!..", Toast.LENGTH_SHORT).show();
+
         File f = new File(Environment.getExternalStorageDirectory() + File.separator + "image.jpg");
         try {
             f.createNewFile();
             FileOutputStream fo = new FileOutputStream(f);
             fo.write(bytes.toByteArray());
-            Toast.makeText(getActivity().getApplicationContext(), "Image Generated successfully!..", Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, "Изображение успешно сохранено во внутреннюю память", Snackbar.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(getActivity().getApplicationContext(), "wrong!.." + e.toString(), Toast.LENGTH_SHORT).show();
+            Snackbar.make(view, "Что-то пошло не так..." + e.toString(), Snackbar.LENGTH_SHORT).show();
         }
 
     }
@@ -131,7 +160,7 @@ public class ResumeFragment extends Fragment {
             img.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
             document.add(img);
             document.close();
-            Toast.makeText(getActivity().getApplicationContext(), "PDF Generated successfully!..", Toast.LENGTH_SHORT).show();
+            Snackbar.make(getView(), "Документ успешно сохранен во внутренней памяти", Snackbar.LENGTH_SHORT).show();
 
         } catch (Exception e) {
 

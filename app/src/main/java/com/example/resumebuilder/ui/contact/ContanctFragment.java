@@ -2,6 +2,7 @@ package com.example.resumebuilder.ui.contact;
 
 import static androidx.core.content.PackageManagerCompat.LOG_TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +17,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.resumebuilder.MainActivity;
 import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.ContactInfo;
 import com.example.resumebuilder.databinding.FragmentContactBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class ContanctFragment extends Fragment{
 
@@ -46,6 +49,12 @@ public class ContanctFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         TextView button_delete = binding.buttonDelete1;
         Button button_save = binding.buttonSave1;
+        binding.buttonRecommendations1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +65,7 @@ public class ContanctFragment extends Fragment{
                 contactInfo.setAddress(binding.address.getText().toString());
                 contactInfo.setDateOfBirth(binding.dateOfBirth.getText().toString());
                 contactViewModel.SaveContact(contactInfo);
+                Snackbar.make(view, "Данные успешно сохранены", Snackbar.LENGTH_SHORT).show();
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +83,7 @@ public class ContanctFragment extends Fragment{
                 contactInfo.setAddress(binding.address.getText().toString());
                 contactInfo.setDateOfBirth(binding.dateOfBirth.getText().toString());
                 contactViewModel.SaveContact(contactInfo);
+                Snackbar.make(view, "Данные успешно удалены", Snackbar.LENGTH_SHORT).show();
             }
         });
     }

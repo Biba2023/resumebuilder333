@@ -26,9 +26,9 @@ public class RealmManager {
         if(instance == null)
             instance = new RealmManager(
                     new RealmConfiguration.Builder().
-                    allowWritesOnUiThread(true).
-                    allowQueriesOnUiThread(true).
-                    name(Realm.DEFAULT_REALM_NAME).build());
+                            allowWritesOnUiThread(true).
+                            allowQueriesOnUiThread(true).
+                            name(Realm.DEFAULT_REALM_NAME).build());
         return instance;
     }
     public void insert(RealmObject object){
@@ -50,25 +50,5 @@ public class RealmManager {
     public RealmObject getRealmObject(Class<? extends RealmObject> table){
         return realm.where(table).findFirst();
     }
-    public RealmResults<Education> getRealmCollectionEducation(){
-        return realm.where(Education.class).findAll();
-    }
-    public RealmResults<Career> getRealmCollectionCareer(){
-        return realm.where(Career.class).findAll();
-    }
-    public RealmResults<ContactInfo> getRealmCollectionContactInfo(){
-        return realm.where(ContactInfo.class).findAll();
-    }
-    public RealmResults<Interests> getRealmCollectionInterests(){
-        return realm.where(Interests.class).findAll();
-    }
-    public RealmResults<KeySkills> getRealmCollectionKeySkills(){
-        return realm.where(KeySkills.class).findAll();
-    }
-    public RealmResults<PersonalInfo> getRealmCollectionPersonalInfo(){
-        return realm.where(PersonalInfo.class).findAll();
-    }
-    public RealmResults<Projects> getRealmCollectionProjects(){
-        return realm.where(Projects.class).findAll();
-    }
+
 }

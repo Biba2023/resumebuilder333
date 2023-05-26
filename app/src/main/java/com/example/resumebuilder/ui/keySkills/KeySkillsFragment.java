@@ -20,6 +20,7 @@ import com.example.resumebuilder.data.KeySkills;
 import com.example.resumebuilder.databinding.FragmentSkillsBinding;
 import com.example.resumebuilder.databinding.FragmentSkillsBinding;
 import com.example.resumebuilder.ui.keySkills.KeySkillsViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 public class KeySkillsFragment extends Fragment {
     private FragmentSkillsBinding binding;
@@ -47,6 +48,7 @@ public class KeySkillsFragment extends Fragment {
                 KeySkills keySkills = new KeySkills();
                 keySkills.setKeySkills(binding.keySkills.getText().toString());
                 keySkillsViewModel.SaveKeySkills(keySkills);
+                Snackbar.make(view, "Данные успешно сохранены", Snackbar.LENGTH_SHORT).show();
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +58,7 @@ public class KeySkillsFragment extends Fragment {
                 KeySkills keySkills = new KeySkills();
                 keySkills.setKeySkills(binding.keySkills.getText().toString());
                 keySkillsViewModel.SaveKeySkills(keySkills);
+                Snackbar.make(view, "Данные успешно удалены", Snackbar.LENGTH_SHORT).show();
 
             }
         });

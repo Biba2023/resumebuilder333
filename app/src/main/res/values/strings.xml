@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">resume builder</string>
+    <string name="app_name">Конструктор резюме</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -22,4 +22,5 @@
     <string name="deletePhoto"><u>Удалить фото</u></string>
     <string name="delete"><u>Удалить</u></string>
     <string name="download">Скачать резюме</string>
+    <string name="recommendations">Рекомендации по заполнению</string>
 </resources>

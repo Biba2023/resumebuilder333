@@ -13,12 +13,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.resumebuilder.App;
 import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.Interests;
 import com.example.resumebuilder.data.PersonalInfo;
 import com.example.resumebuilder.databinding.FragmentInterestsBinding;
 import com.example.resumebuilder.databinding.FragmentPersonalBinding;
 import com.example.resumebuilder.ui.personalInfo.PersonalInfoViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 public class InterestsFragment extends Fragment {
     private FragmentInterestsBinding binding;
@@ -46,6 +48,7 @@ public class InterestsFragment extends Fragment {
                 Interests interests = new Interests();
                 interests.setInterests(binding.interests.getText().toString());
                 interestsViewModel.SaveInterests(interests);
+                Snackbar.make(view, "Данные успешно сохранены", Snackbar.LENGTH_SHORT).show();
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +58,7 @@ public class InterestsFragment extends Fragment {
                 Interests interests = new Interests();
                 interests.setInterests(binding.interests.getText().toString());
                 interestsViewModel.SaveInterests(interests);
+                Snackbar.make(view, "Данные успешно удалены", Snackbar.LENGTH_SHORT).show();
             }
         });
     }

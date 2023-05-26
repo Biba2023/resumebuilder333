@@ -1,5 +1,7 @@
 package com.example.resumebuilder.data;
 
+import com.example.resumebuilder.App;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -42,6 +44,7 @@ public class Education  extends RealmObject {
 
     public void setUniversity(String university) {
         this.university = university;
+        App.universityResume = university;
     }
 
     public String getQualification() {
@@ -50,6 +53,7 @@ public class Education  extends RealmObject {
 
     public void setQualification(String qualification) {
         this.qualification = qualification;
+        App.qualificationResume = qualification;
     }
 
     public String getGrade() {
@@ -58,6 +62,7 @@ public class Education  extends RealmObject {
 
     public void setGrade(String grade) {
         this.grade = grade;
+        App.gradeResume = grade;
     }
 
     public String getDetails() {
@@ -66,6 +71,7 @@ public class Education  extends RealmObject {
 
     public void setDetails(String details) {
         this.details = details;
+        App.detailsOfEduResume = details;
     }
 
     public String getStartDate() {
@@ -73,12 +79,14 @@ public class Education  extends RealmObject {
     }
     public void setStartDate(String startDate) {
         this.startDate = startDate;
+        App.startDateOfEduResume = startDate;
     }
     public String getEndDate() {
         return endDate;
     }
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+        App.endDateOfEduResume = endDate;
     }
 
     @Override

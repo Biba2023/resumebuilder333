@@ -1,5 +1,7 @@
 package com.example.resumebuilder.data;
 
+import com.example.resumebuilder.App;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -25,6 +27,7 @@ public class Interests extends RealmObject {
 
     public void setInterests(String interests) {
         this.interests = interests;
+        App.interestsResume = interests;
     }
     @Override
     public String toString() {

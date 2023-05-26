@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.Education;
 import com.example.resumebuilder.databinding.FragmentEducationBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class EducationFragment extends Fragment {
@@ -50,6 +51,7 @@ public class EducationFragment extends Fragment {
                 education.setStartDate(binding.startDateofEducation.getText().toString());
                 education.setEndDate(binding.endDateofeducation.getText().toString());
                 educationViewModel.SaveEducation(education);
+                Snackbar.make(view, "Данные успешно сохранены", Snackbar.LENGTH_SHORT).show();
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +71,7 @@ public class EducationFragment extends Fragment {
                 education.setStartDate(binding.startDateofEducation.getText().toString());
                 education.setEndDate(binding.endDateofeducation.getText().toString());
                 educationViewModel.SaveEducation(education);
+                Snackbar.make(view, "Данные успешно удалены", Snackbar.LENGTH_SHORT).show();
             }
         });
     }

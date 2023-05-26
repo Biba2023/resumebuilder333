@@ -1,5 +1,7 @@
 package com.example.resumebuilder.data;
 
+import com.example.resumebuilder.App;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -22,6 +24,7 @@ public class KeySkills extends RealmObject {
 
     public void setKeySkills(String keySkills) {
         this.keySkills = keySkills;
+        App.keySkillsResume = keySkills;
     }
     @Override
     public String toString() {

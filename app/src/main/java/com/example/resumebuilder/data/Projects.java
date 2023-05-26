@@ -1,5 +1,7 @@
 package com.example.resumebuilder.data;
 
+import com.example.resumebuilder.App;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -33,6 +35,7 @@ public class Projects extends RealmObject {
 
     public void setProject(String project) {
         this.project = project;
+        App.projectResume = project;
     }
 
     public String getDetails() {
@@ -41,6 +44,7 @@ public class Projects extends RealmObject {
 
     public void setDetails(String details) {
         this.details = details;
+        App.detailsOfProjectResume = details;
     }
 
     public String getStartDate() {
@@ -48,12 +52,14 @@ public class Projects extends RealmObject {
     }
     public void setStartDate(String startDate) {
         this.startDate = startDate;
+        App.startDateOfProjectResume = startDate;
     }
     public String getEndDate() {
         return endDate;
     }
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+        App.endDateOfProjectResume = endDate;
     }
     @Override
     public String toString() {

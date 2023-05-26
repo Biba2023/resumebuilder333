@@ -10,38 +10,266 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@color/grey"
-            android:weightSum="5">
+            android:weightSum="5"
+            >
+
             <LinearLayout
-                android:id="@+id/biba"
+                android:id="@+id/resume"
                 android:orientation="vertical"
                 android:layout_width="370dp"
-                android:layout_height="500dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:weightSum="8"
-                android:layout_weight="3"
+                android:layout_gravity="center_vertical|center"
+                android:layout_weight="4"
                 android:background="@color/white">
+
                 <TextView
-                    android:layout_width="180dp"
-                    android:layout_height="50dp"
-                    android:text=""
-                    android:textSize="25dp"/>
+                    android:id="@+id/nameResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ФИО"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginStart="88dp"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/addressResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="98dp"
+                    android:textSize="10dp"
+                    android:text="Адрес"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/emailAndPhoneAndDoB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:textSize="10dp"
+                    android:text="Email/phone"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/experienceResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="10dp"
+                    android:text="Ключевой опыт"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="13dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Профессиональный опыт"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/nameOfCompanyResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="3dp"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:text="Название компании"
+                    android:textColor="@color/blue"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/jobResume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:text="Должность"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/dateOfJob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="215dp"
+                        android:layout_marginEnd="15dp"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:text="Даты"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/introductionResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="2dp"
+                    android:textSize="10dp"
+                    android:text="Основные обязанности"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/detailsOfJobResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="10dp"
+                    android:text="Детали"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="13dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Образование"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/nameOfUniversityResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="3dp"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:text="Название школы/университета"
+                    android:textColor="@color/blue"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/qualificationAndGradeResume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:text="Квалификация и средняя оценка"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/dateOfEducation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="115dp"
+                        android:layout_marginEnd="15dp"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:text="Даты"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/detailsOfEducationResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="10dp"
+                    android:text="•Детали"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="13dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Проекты"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/nameOfProjectResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="3dp"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:text="Название проекта"
+                    android:textColor="@color/blue"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/detailsOfProjectResume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textSize="10dp"
+                        android:text="•Детали проета"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/dateOfProject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="195dp"
+                        android:layout_marginEnd="15dp"
+                        android:textSize="10dp"
+                        android:textStyle="bold"
+                        android:text="Даты"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="13dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Ключевые навыки"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/skillsResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="10dp"
+                    android:text="•Навыки"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="13dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Интересы"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/interestsResume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:textSize="10dp"
+                    android:text="•Интересы"
+                    android:textColor="@color/black"/>
+
             </LinearLayout>
-            <EditText
-                android:id="@+id/g"
-                android:layout_width="60dp"
-                android:layout_height="20dp"/>
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_download"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
                 android:background="@color/blue"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd = "20dp"
+
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
                 android:textColor="@color/white"
                 android:text="@string/download"/>
         </LinearLayout>

@@ -19,6 +19,7 @@ import com.example.resumebuilder.data.Projects;
 import com.example.resumebuilder.databinding.FragmentEducationBinding;
 import com.example.resumebuilder.databinding.FragmentProjectsBinding;
 import com.example.resumebuilder.ui.education.EducationViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 public class ProjectsFragment extends Fragment {
     private FragmentProjectsBinding binding;
@@ -49,6 +50,7 @@ public class ProjectsFragment extends Fragment {
                 projects.setStartDate(binding.startDateofProject.getText().toString());
                 projects.setEndDate(binding.endDateofProject.getText().toString());
                 projectsViewModel.SaveProjects(projects);
+                Snackbar.make(view, "Данные успешно сохранены", Snackbar.LENGTH_SHORT).show();
             }
         });
         button_delete.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +66,7 @@ public class ProjectsFragment extends Fragment {
                 projects.setStartDate(binding.startDateofProject.getText().toString());
                 projects.setEndDate(binding.endDateofProject.getText().toString());
                 projectsViewModel.SaveProjects(projects);
+                Snackbar.make(view, "Данные успешно удалены", Snackbar.LENGTH_SHORT).show();
             }
         });
     }

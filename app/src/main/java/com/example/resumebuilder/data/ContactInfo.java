@@ -1,5 +1,7 @@
 package com.example.resumebuilder.data;
 
+import com.example.resumebuilder.App;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -40,6 +42,7 @@ public class ContactInfo extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
+        App.nameResume = name;
     }
 
     public String getEmail() {
@@ -48,6 +51,7 @@ public class ContactInfo extends RealmObject {
 
     public void setEmail(String email) {
         this.email = email;
+        App.emailResume = email;
     }
 
     public String getTelephone() {
@@ -56,6 +60,7 @@ public class ContactInfo extends RealmObject {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+        App.telephoneResume = telephone;
     }
 
     public String getAddress() {
@@ -64,6 +69,7 @@ public class ContactInfo extends RealmObject {
 
     public void setAddress(String address) {
         this.address = address;
+        App.addressResume = address;
     }
 
     public String getDateOfBirth() {
@@ -72,6 +78,7 @@ public class ContactInfo extends RealmObject {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        App.dateofBirthResume = dateOfBirth;
     }
     @Override
     public String toString() {

@@ -23,7 +23,15 @@
                 android:layout_gravity="center_vertical|center"
                 android:layout_weight="4"
                 android:background="@color/white">
-
+                <ImageView
+                    android:id="@+id/photoResume"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_user"/>
+                <TextView
+                    android:id="@+id/path"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/nameResume"
                     android:layout_width="wrap_content"
@@ -91,6 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
+                        android:layout_marginEnd="180dp"
                         android:textSize="10dp"
                         android:textStyle="bold"
                         android:text="Должность"
@@ -99,7 +108,7 @@
                         android:id="@+id/dateOfJob"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="215dp"
+
                         android:layout_marginEnd="15dp"
                         android:textSize="10dp"
                         android:textStyle="bold"
@@ -155,6 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:textSize="10dp"
+                        android:layout_marginEnd="150dp"
                         android:textStyle="bold"
                         android:text="Квалификация и средняя оценка"
                         android:textColor="@color/black"/>
@@ -162,7 +172,6 @@
                         android:id="@+id/dateOfEducation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="115dp"
                         android:layout_marginEnd="15dp"
                         android:textSize="10dp"
                         android:textStyle="bold"
@@ -209,6 +218,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
+                        android:layout_marginEnd="165dp"
                         android:textSize="10dp"
                         android:text="•Детали проета"
                         android:textColor="@color/black"/>
@@ -216,7 +226,6 @@
                         android:id="@+id/dateOfProject"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="195dp"
                         android:layout_marginEnd="15dp"
                         android:textSize="10dp"
                         android:textStyle="bold"
@@ -260,18 +269,32 @@
 
             </LinearLayout>
 
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_download"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
                 android:background="@color/blue"
-
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/white"
                 android:text="@string/download"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_share"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:background="@color/blue"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/white"
+                android:text="@string/share"/>
+            </LinearLayout>
         </LinearLayout>
 
 

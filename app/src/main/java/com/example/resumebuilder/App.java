@@ -1,6 +1,7 @@
 package com.example.resumebuilder;
 
 import android.app.Application;
+import android.net.Uri;
 
 import com.example.resumebuilder.data.Career;
 import com.example.resumebuilder.data.ContactInfo;
@@ -8,6 +9,7 @@ import com.example.resumebuilder.data.Education;
 import com.example.resumebuilder.data.Interests;
 import com.example.resumebuilder.data.KeySkills;
 import com.example.resumebuilder.data.PersonalInfo;
+import com.example.resumebuilder.data.Photo;
 import com.example.resumebuilder.data.Projects;
 import com.example.resumebuilder.db.RealmManager;
 
@@ -39,7 +41,7 @@ public class App extends Application {
     public static String keySkillsResume = "Ключевые навыки";
     public static String interestsResume = "Интересы";
 
-
+    public static String photoPathResume;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -52,6 +54,7 @@ public class App extends Application {
         Projects projects = (Projects) RealmManager.getInstance().getRealmObject(Projects.class);
         KeySkills keySkills = (KeySkills) RealmManager.getInstance().getRealmObject(KeySkills.class);
         Interests interests = (Interests) RealmManager.getInstance().getRealmObject(Interests.class);
+        //Photo photo = (Photo) RealmManager.getInstance().getRealmObject(Photo.class);
         nameResume = contactInfo.getName();
         addressResume = contactInfo.getAddress();
         emailResume = contactInfo.getEmail();
@@ -75,7 +78,8 @@ public class App extends Application {
         endDateOfProjectResume = projects.getEndDate();
         keySkillsResume = keySkills.getKeySkills();
         interestsResume = interests.getInterests();
-        interestsResume = interests.getInterests();
+        //photoPathResume = photo.getPhotoPath();
+
 
     }
 

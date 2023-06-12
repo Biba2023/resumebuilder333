@@ -23,4 +23,5 @@
     <string name="delete"><u>Удалить</u></string>
     <string name="download">Скачать резюме</string>
     <string name="recommendations">Рекомендации по заполнению</string>
+    <string name="share">Поделиться</string>
 </resources>

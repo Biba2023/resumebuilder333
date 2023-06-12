@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,11 +18,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.resumebuilder.App;
 
+import com.example.resumebuilder.BuildConfig;
 import com.example.resumebuilder.MainActivity;
 import com.example.resumebuilder.PermissionUtils;
 import com.example.resumebuilder.databinding.FragmentResumeBinding;
@@ -70,6 +75,13 @@ public class ResumeFragment extends Fragment {
         binding.dateOfProject.setText(App.startDateOfProjectResume + " - " + App.endDateOfProjectResume);
         binding.skillsResume.setText("•" + App.keySkillsResume);
         binding.interestsResume.setText("•" + App.interestsResume);
+        /*Bitmap bm = BitmapFactory.decodeFile(App.photoPathResume);
+        binding.photoResume.setImageBitmap(bm);*/
+        File imgFile = new File(App.photoPathResume);
+        if(imgFile.exists()){
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            binding.photoResume.setImageBitmap(myBitmap);
+        }
         return root;
 
     }
@@ -93,6 +105,17 @@ public class ResumeFragment extends Fragment {
                 }
 
 
+            }
+        });
+        binding.buttonShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Uri imageUri = Uri.parse(Environment.getExternalStorageDirectory() + File.separator + "image.jpg");
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("image/jpg");
+                intent.putExtra(Intent.EXTRA_STREAM, imageUri);
+                startActivity(Intent.createChooser(intent, "Super"));*/
+                layoutToImageforShare(linearLayout);
             }
         });
 
@@ -162,6 +185,62 @@ public class ResumeFragment extends Fragment {
             document.close();
             Snackbar.make(getView(), "Документ успешно сохранен во внутренней памяти", Snackbar.LENGTH_SHORT).show();
 
+        } catch (Exception e) {
+
+        }
+    }
+    public void layoutToImageforShare(View view) {
+        // get view group using reference
+        relativeLayout = view;
+        // convert view group to bitmap
+        relativeLayout.setDrawingCacheEnabled(true);
+        relativeLayout.buildDrawingCache();
+        Bitmap bm = relativeLayout.getDrawingCache();
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("image/png");
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+
+        File f = new File(getActivity().getApplicationContext().getExternalCacheDir(), File.separator+"image.png");
+
+        try {
+
+            FileOutputStream fo = new FileOutputStream(f);
+            fo.write(bytes.toByteArray());
+            fo.flush();
+            fo.close();
+            f.setReadable(true, false);
+            final Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Uri uri = FileProvider.getUriForFile(getActivity().getApplicationContext(), BuildConfig.APPLICATION_ID+".provider", f);
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setType("image/*");
+            startActivity(Intent.createChooser(intent, "Поделиться резюме"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Snackbar.make(view, "Что-то пошло не так..." + e.toString(), Snackbar.LENGTH_SHORT).show();
+        }
+
+    }
+    public void imageToPDFforShare() throws FileNotFoundException {
+        try {
+            Document document = new Document();
+            dirpath = android.os.Environment.getExternalStorageDirectory().toString();
+            PdfWriter.getInstance(document, new FileOutputStream(dirpath + "/NewPDF.pdf")); //  Change pdf's name.
+            document.open();
+            Image img = Image.getInstance(Environment.getExternalStorageDirectory() + File.separator + "image.jpg");
+            float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+                    - document.rightMargin() - 0) / img.getWidth()) * 100;
+            img.scalePercent(scaler);
+            img.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
+            document.add(img);
+            document.close();
+            Snackbar.make(getView(), "Документ успешно сохранен во внутренней памяти", Snackbar.LENGTH_SHORT).show();
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("application/pdf");
+            intent.putExtra(Intent.EXTRA_STREAM, dirpath + "/NewPDF.pdf");
+            startActivity(Intent.createChooser(intent, "Super"));
         } catch (Exception e) {
 
         }

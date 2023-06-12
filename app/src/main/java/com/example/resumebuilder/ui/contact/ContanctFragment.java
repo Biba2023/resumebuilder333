@@ -52,7 +52,8 @@ public class ContanctFragment extends Fragment{
         binding.buttonRecommendations1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), ContactRecommendationsActivity.class);
+                startActivity(intent);
             }
         });
         button_save.setOnClickListener(new View.OnClickListener() {

@@ -1,5 +1,6 @@
 package com.example.resumebuilder.ui.education;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.Education;
 import com.example.resumebuilder.databinding.FragmentEducationBinding;
+import com.example.resumebuilder.ui.contact.ContactRecommendationsActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 
@@ -40,6 +42,13 @@ public class EducationFragment extends Fragment {
 
         TextView button_delete = binding.buttonDelete4;
         Button button_save = binding.buttonSave4;
+        binding.buttonRecommendations3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EducationRecommendationsActivity.class);
+                startActivity(intent);
+            }
+        });
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

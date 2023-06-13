@@ -1,26 +1,23 @@
-package com.example.resumebuilder.ui.contact;
+package com.example.resumebuilder.ui.keySkills;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.resumebuilder.MainActivity;
 import com.example.resumebuilder.R;
-import com.example.resumebuilder.databinding.ActivityMainBinding;
+import com.example.resumebuilder.ui.contact.ContanctFragment;
 
-public class ContactRecommendationsActivity extends Activity {
+public class KeySkillsRecommendationsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_recommendations);
-        ImageButton button_back = (ImageButton) findViewById(R.id.button_back1);
+        setContentView(R.layout.activity_key_skills_recommendations);
+        ImageButton button_back = (ImageButton) findViewById(R.id.button_back5);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

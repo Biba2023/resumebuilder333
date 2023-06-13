@@ -23,11 +23,22 @@
                 android:layout_gravity="center_vertical|center"
                 android:layout_weight="4"
                 android:background="@color/white">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/photoResume"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
                     android:src="@drawable/icon_user"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
                 <TextView
                     android:id="@+id/path"
                     android:layout_width="wrap_content"
@@ -37,8 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ФИО"
-                    android:layout_marginTop="23dp"
-                    android:layout_marginStart="88dp"
+                    android:layout_marginStart="25dp"
                     android:textColor="@color/blue"
                     android:textStyle="bold"
                     android:textSize="20dp"/>
@@ -46,7 +56,7 @@
                     android:id="@+id/addressResume"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="98dp"
+                    android:layout_marginStart="25dp"
                     android:textSize="10dp"
                     android:text="Адрес"
                     android:textColor="@color/black"/>
@@ -54,17 +64,19 @@
                     android:id="@+id/emailAndPhoneAndDoB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="48dp"
+                    android:layout_marginStart="25dp"
                     android:textSize="10dp"
                     android:text="Email/phone"
                     android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
                 <TextView
                     android:id="@+id/experienceResume"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="20dp"
                     android:textSize="10dp"
                     android:text="Ключевой опыт"
                     android:textColor="@color/black"/>
@@ -99,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginEnd="180dp"
+                        android:layout_marginEnd="150dp"
                         android:textSize="10dp"
                         android:textStyle="bold"
                         android:text="Должность"
@@ -218,19 +230,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginEnd="165dp"
+                        android:layout_marginEnd="150dp"
                         android:textSize="10dp"
                         android:text="•Детали проета"
                         android:textColor="@color/black"/>
+
                     <TextView
                         android:id="@+id/dateOfProject"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginEnd="15dp"
-                        android:textSize="10dp"
-                        android:textStyle="bold"
                         android:text="Даты"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"

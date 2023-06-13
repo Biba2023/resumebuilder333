@@ -19,11 +19,23 @@
         android:theme="@style/Theme.ResumeBuilder"
         tools:targetApi="31">
         <activity
+            android:name=".ui.personalInfo.PersonalInfoRecommendationsActivity"
+            android:label="Персональная информация" />
+        <activity
+            android:name=".ui.keySkills.KeySkillsRecommendationsActivity"
+            android:label="Ключевые навыки" />
+        <activity
+            android:name=".ui.interests.InterestsRecommendationsActivity"
+            android:label="Интересы" />
+        <activity
+            android:name=".ui.education.EducationRecommendationsActivity"
+            android:label="Образование" />
+        <activity
             android:name=".ui.career.CareerRecommendationsActivity"
-            android:exported="false" />
+            android:label="Опыт работы" />
         <activity
             android:name=".ui.contact.ContactRecommendationsActivity"
-            android:label="@string/app_name" />
+            android:label="Контактная информация" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

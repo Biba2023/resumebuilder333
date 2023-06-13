@@ -1,6 +1,7 @@
 package com.example.resumebuilder;
 
 import android.app.Application;
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import com.example.resumebuilder.data.Career;
@@ -41,7 +42,7 @@ public class App extends Application {
     public static String keySkillsResume = "Ключевые навыки";
     public static String interestsResume = "Интересы";
 
-    public static String photoPathResume;
+    public static Bitmap photoResume;
     @Override
     public void onCreate() {
         super.onCreate();

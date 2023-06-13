@@ -1,5 +1,6 @@
 package com.example.resumebuilder.ui.keySkills;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.resumebuilder.data.Interests;
 import com.example.resumebuilder.data.KeySkills;
 import com.example.resumebuilder.databinding.FragmentSkillsBinding;
 import com.example.resumebuilder.databinding.FragmentSkillsBinding;
+import com.example.resumebuilder.ui.contact.ContactRecommendationsActivity;
 import com.example.resumebuilder.ui.keySkills.KeySkillsViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -42,6 +44,13 @@ public class KeySkillsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView button_delete = binding.buttonDelete5;
         Button button_save = binding.buttonSave5;
+        binding.buttonRecommendations5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), KeySkillsRecommendationsActivity.class);
+                startActivity(intent);
+            }
+        });
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

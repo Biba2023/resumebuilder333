@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/personal"
-            android:title="Личная информация" />
+            android:title="Персональная информация" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/career"

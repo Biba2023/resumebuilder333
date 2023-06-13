@@ -1,5 +1,6 @@
 package com.example.resumebuilder.ui.personalInfo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.resumebuilder.R;
 import com.example.resumebuilder.data.PersonalInfo;
 import com.example.resumebuilder.databinding.FragmentPersonalBinding;
+import com.example.resumebuilder.ui.contact.ContactRecommendationsActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 public class PersonalInfoFragment extends Fragment {
@@ -39,6 +41,13 @@ public class PersonalInfoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         TextView button_delete = binding.buttonDelete2;
         Button button_save = binding.buttonSave2;
+        binding.buttonRecommendations6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PersonalInfoRecommendationsActivity.class);
+                startActivity(intent);
+            }
+        });
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

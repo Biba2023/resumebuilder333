@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.career.CareerRecommendationsActivity">
+    tools:context=".ui.interests.InterestsRecommendationsActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageButton
-                android:id="@+id/button_back2"
+                android:id="@+id/button_back5"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="20dp"
@@ -34,7 +34,7 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="@string/career_recommendations_tittle"/>
+                android:text="@string/interests_recommendations_tittle"/>
 
         </LinearLayout>
         <TextView
@@ -45,7 +45,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:textSize="15dp"
-            android:text="@string/career_recommendations1"/>
+            android:text="@string/interests_recommendations1"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:textSize="15dp"
-            android:text="@string/career_recommendations2"/>
+            android:text="@string/interests_recommendations2"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,16 +63,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:textSize="15dp"
-            android:text="@string/career_recommendations3"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:textSize="15dp"
-            android:text="@string/career_recommendations4"/>
+            android:text="@string/interests_recommendations3"/>
     </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

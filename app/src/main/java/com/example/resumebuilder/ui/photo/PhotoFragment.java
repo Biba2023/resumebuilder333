@@ -17,6 +17,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -68,12 +69,8 @@ public class PhotoFragment extends Fragment {
         View root = binding.getRoot();
         binding.setViewModel(photoViewModel);
         binding.setLifecycleOwner(this);
-        /*if(App.photoPathResume != ""){
-            Bitmap bmImg = BitmapFactory.decodeFile(App.photoPathResume);
-            binding.photo.setImageBitmap(bmImg);
-        }
-         */
 
+        binding.photo.setImageBitmap(readBitmap(getImageFile("image.png")));
 
         return root;
     }
@@ -97,11 +94,20 @@ public class PhotoFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Photo photo = new Photo();
-                photo.setPhotoPath(picturePath);
-                photoViewModel.SavePhoto(photo);
-                Snackbar.make(view, "Фото успешно сохранено", Snackbar.LENGTH_SHORT).show();*/
 
+                Bitmap bitmap = ((BitmapDrawable)binding.photo.getDrawable()).getBitmap();
+                writeBitmap(bitmap, getImageFile("image.png"));
+                App.photoResume = readBitmap(getImageFile("image.png"));
+
+            }
+        });
+        binding.buttonDelete8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon_user);
+                writeBitmap(bitmap, getImageFile("image.png"));
+                App.photoResume = readBitmap(getImageFile("image.png"));
+                binding.photo.setImageBitmap(readBitmap(getImageFile("image.png")));
             }
         });
 
@@ -116,28 +122,46 @@ public class PhotoFragment extends Fragment {
             if(requestCode==GALLERY_REQ_CODE){
                 binding.photo.setImageURI(data.getData());
                 selectedImageUri = data.getData();
-                //App.photoPathResume = selectedImageUri.getPath();
-                App.photoPathResume = selectedImageUri.getPath();
+
 
             }
         }
     }
-    /*public static String getPath(Context context, Uri uri){
-        String result = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = context.getContentResolver().query(uri, proj, null, null, null);
-        if(cursor != null) {
-            if (cursor.moveToFirst()) {
-                int column_index = cursor.getColumnIndexOrThrow(proj[0]);
-                result = cursor.getString(column_index);
+    private boolean writeBitmap(Bitmap bitmap, File imageFile){
+        FileOutputStream out = null;
+        boolean success = false;
+
+        try {
+            out = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            success = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null)
+                    out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            cursor.close();
         }
-        if(result == null){
-            result = "Not found";
-        }
-        return result;
-    }*/
+        return success;
+    }
+
+    private Bitmap readBitmap(File imageFile){
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), options);
+        return bitmap;
+    }
+
+
+    private File getImageFile(String filename){
+        return new File(getContext().getFilesDir().getPath()
+                + "/"
+                + filename);
+    }
+
 
 
     @Override

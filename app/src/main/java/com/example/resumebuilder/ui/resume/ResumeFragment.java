@@ -28,6 +28,7 @@ import com.example.resumebuilder.BuildConfig;
 import com.example.resumebuilder.MainActivity;
 import com.example.resumebuilder.PermissionUtils;
 import com.example.resumebuilder.databinding.FragmentResumeBinding;
+import com.example.resumebuilder.ui.photo.PhotoFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -75,13 +76,13 @@ public class ResumeFragment extends Fragment {
         binding.dateOfProject.setText(App.startDateOfProjectResume + " - " + App.endDateOfProjectResume);
         binding.skillsResume.setText("•" + App.keySkillsResume);
         binding.interestsResume.setText("•" + App.interestsResume);
-        /*Bitmap bm = BitmapFactory.decodeFile(App.photoPathResume);
-        binding.photoResume.setImageBitmap(bm);*/
-        File imgFile = new File(App.photoPathResume);
+        //Bitmap bm = BitmapFactory.decodeFile(App.photoPathResume);
+        binding.photoResume.setImageBitmap(App.photoResume);
+        /*File imgFile = new File(App.photoPathResume);
         if(imgFile.exists()){
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             binding.photoResume.setImageBitmap(myBitmap);
-        }
+        }*/
         return root;
 
     }
@@ -158,7 +159,7 @@ public class ResumeFragment extends Fragment {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
 
-        File f = new File(Environment.getExternalStorageDirectory() + File.separator + "image.jpg");
+        File f = new File(Environment.getExternalStorageDirectory() + File.separator + "resume.jpg");
         try {
             f.createNewFile();
             FileOutputStream fo = new FileOutputStream(f);
@@ -174,9 +175,9 @@ public class ResumeFragment extends Fragment {
         try {
             Document document = new Document();
             dirpath = android.os.Environment.getExternalStorageDirectory().toString();
-            PdfWriter.getInstance(document, new FileOutputStream(dirpath + "/NewPDF.pdf")); //  Change pdf's name.
+            PdfWriter.getInstance(document, new FileOutputStream(dirpath + "/Resume.pdf")); //  Change pdf's name.
             document.open();
-            Image img = Image.getInstance(Environment.getExternalStorageDirectory() + File.separator + "image.jpg");
+            Image img = Image.getInstance(Environment.getExternalStorageDirectory() + File.separator + "resume.jpg");
             float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
                     - document.rightMargin() - 0) / img.getWidth()) * 100;
             img.scalePercent(scaler);
@@ -201,7 +202,7 @@ public class ResumeFragment extends Fragment {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.PNG, 100, bytes);
 
-        File f = new File(getActivity().getApplicationContext().getExternalCacheDir(), File.separator+"image.png");
+        File f = new File(getActivity().getApplicationContext().getExternalCacheDir(), File.separator+"resume.png");
 
         try {
 
@@ -223,29 +224,6 @@ public class ResumeFragment extends Fragment {
         }
 
     }
-    public void imageToPDFforShare() throws FileNotFoundException {
-        try {
-            Document document = new Document();
-            dirpath = android.os.Environment.getExternalStorageDirectory().toString();
-            PdfWriter.getInstance(document, new FileOutputStream(dirpath + "/NewPDF.pdf")); //  Change pdf's name.
-            document.open();
-            Image img = Image.getInstance(Environment.getExternalStorageDirectory() + File.separator + "image.jpg");
-            float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
-                    - document.rightMargin() - 0) / img.getWidth()) * 100;
-            img.scalePercent(scaler);
-            img.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
-            document.add(img);
-            document.close();
-            Snackbar.make(getView(), "Документ успешно сохранен во внутренней памяти", Snackbar.LENGTH_SHORT).show();
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("application/pdf");
-            intent.putExtra(Intent.EXTRA_STREAM, dirpath + "/NewPDF.pdf");
-            startActivity(Intent.createChooser(intent, "Super"));
-        } catch (Exception e) {
-
-        }
-    }
-
 
 
 
